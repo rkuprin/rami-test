@@ -28,11 +28,9 @@ function App() {
   useEffect(() => {
     if (mode === "auto") {
       window.parent.postMessage({ type: "disable" }, document.referrer)
-      const interval = setInterval(() => {
+      setTimeout(() => {
         setGreen(!green)
       }, 2000)
-
-      return () => clearInterval(interval)
     } else {
       window.parent.postMessage({ type: "enable" }, document.referrer)
     }
