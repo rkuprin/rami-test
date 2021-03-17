@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import styles from "./app.module.scss"
 import Circle from "./components/circle"
 
@@ -25,16 +25,14 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    if (mode === "auto") {
-      window.parent.postMessage({ type: "disable" }, document.referrer)
-      setTimeout(() => {
-        setGreen(!green)
-      }, 2000)
-    } else {
-      window.parent.postMessage({ type: "enable" }, document.referrer)
-    }
-  })
+  if (mode === "auto") {
+    window.parent.postMessage({ type: "disable" }, document.referrer)
+    setTimeout(() => {
+      setGreen(!green)
+    }, 2000)
+  } else {
+    window.parent.postMessage({ type: "enable" }, document.referrer)
+  }
 
   return (
     <div className={styles.app}>
