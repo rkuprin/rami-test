@@ -4,6 +4,7 @@ import { Message } from "./models/message.model"
 function App() {
   const [buttonDisabled, setButtonDisabled] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+
   const colorTriggerHandler = () => {
     const iframe = iframeRef.current?.contentWindow
     iframe?.postMessage("triggerColor", "http://localhost:3001")
